@@ -35,9 +35,10 @@ export default function Dashboard() {
 
     if (bets) {
       const totalBets = bets.length;
+      const totalBetsMade = bets.filter((bet) => bet.status === 'green' || bet.status === 'mafia').length;
       const totalProfit = bets.reduce((sum, bet) => sum + (bet.result || 0), 0);
       const greenBets = bets.filter((bet) => bet.status === 'green').length;
-      const greenRate = totalBets > 0 ? (greenBets / totalBets) * 100 : 0;
+      const greenRate = totalBets > 0 ? (greenBets / totalBetsMade) * 100 : 0;
       const avgOdd =
         bets.length > 0
           ? bets.reduce((sum, bet) => sum + bet.odd, 0) / bets.length

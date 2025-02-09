@@ -306,7 +306,7 @@ export default function BetsList() {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {bets.map((bet) => (
+          {[...bets].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()).map((bet) => (
               <tr key={bet.id}>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {format(new Date(bet.date), 'dd/MM/yyyy')}
