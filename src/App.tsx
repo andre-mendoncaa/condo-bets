@@ -61,7 +61,7 @@ function App() {
           }
         />
         <Route
-          path="/"
+          path="/condo-bets"
           element={
             <PrivateRoute>
               <Layout>
