@@ -17,7 +17,6 @@ function PrivateRoute({ children }: { children: React.ReactNode }) {
   }
 
   if (!session) {
-    // Redireciona para o login mantendo a URL original como state
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
@@ -33,8 +32,7 @@ function PublicRoute({ children }: { children: React.ReactNode }) {
   }
 
   if (session) {
-    // Se já estiver autenticado, redireciona para a página inicial
-    return <Navigate to={(location.state as any)?.from?.pathname || '/'} replace />;
+    return <Navigate to={location.state?.from?.pathname || '/'} replace />;
   }
 
   return children;
@@ -42,10 +40,10 @@ function PublicRoute({ children }: { children: React.ReactNode }) {
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/condo-bets">
       <Routes>
         <Route
-          path="/condo-bets/login"
+          path="/login"
           element={
             <PublicRoute>
               <Login />
@@ -53,7 +51,7 @@ function App() {
           }
         />
         <Route
-          path="/condo-bets/register"
+          path="/register"
           element={
             <PublicRoute>
               <Register />
@@ -61,7 +59,7 @@ function App() {
           }
         />
         <Route
-          path="/condo-bets/"
+          path="/"
           element={
             <PrivateRoute>
               <Layout>
@@ -71,7 +69,7 @@ function App() {
           }
         />
         <Route
-          path="/condo-bets/bets"
+          path="/bets"
           element={
             <PrivateRoute>
               <Layout>
@@ -79,9 +77,9 @@ function App() {
               </Layout>
             </PrivateRoute>
           }
-          />
-          <Route
-          path="/condo-bets/calculator"
+        />
+        <Route
+          path="/calculator"
           element={
             <PrivateRoute>
               <Layout>
