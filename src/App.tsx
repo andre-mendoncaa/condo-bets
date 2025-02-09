@@ -45,7 +45,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route
-          path="/login"
+          path="/condo-bets/login"
           element={
             <PublicRoute>
               <Login />
@@ -53,7 +53,7 @@ function App() {
           }
         />
         <Route
-          path="/register"
+          path="/condo-bets/register"
           element={
             <PublicRoute>
               <Register />
@@ -61,7 +61,7 @@ function App() {
           }
         />
         <Route
-          path="/condo-bets"
+          path="/condo-bets/"
           element={
             <PrivateRoute>
               <Layout>
@@ -71,7 +71,7 @@ function App() {
           }
         />
         <Route
-          path="/bets"
+          path="/condo-bets/bets"
           element={
             <PrivateRoute>
               <Layout>
@@ -81,7 +81,7 @@ function App() {
           }
           />
           <Route
-          path="/calculator"
+          path="/condo-bets/calculator"
           element={
             <PrivateRoute>
               <Layout>
